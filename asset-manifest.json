@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/pokemon-cries/static/css/main.1aa68c12.chunk.css",
+    "main.js": "/pokemon-cries/static/js/main.eb4a906b.chunk.js",
+    "main.js.map": "/pokemon-cries/static/js/main.eb4a906b.chunk.js.map",
+    "runtime~main.js": "/pokemon-cries/static/js/runtime~main.0f0f56f1.js",
+    "runtime~main.js.map": "/pokemon-cries/static/js/runtime~main.0f0f56f1.js.map",
+    "static/js/2.373ccd69.chunk.js": "/pokemon-cries/static/js/2.373ccd69.chunk.js",
+    "static/js/2.373ccd69.chunk.js.map": "/pokemon-cries/static/js/2.373ccd69.chunk.js.map",
+    "index.html": "/pokemon-cries/index.html",
+    "precache-manifest.b230740ec2905581ef02f8a6c77be5e0.js": "/pokemon-cries/precache-manifest.b230740ec2905581ef02f8a6c77be5e0.js",
+    "service-worker.js": "/pokemon-cries/service-worker.js",
+    "static/css/main.1aa68c12.chunk.css.map": "/pokemon-cries/static/css/main.1aa68c12.chunk.css.map",
+    "static/media/App.css": "/pokemon-cries/static/media/pokemon_pixel_font.4ca88767.ttf",
+    "static/media/speaker.svg": "/pokemon-cries/static/media/speaker.c74a590b.svg"
+  }
+}
