@@ -1,0 +1,67 @@
+@font-face {
+  font-family: pokemonFont; /*a name to be used later*/
+  src: url(pokemon_pixel_font.ttf); /*URL to font*/
+}
+
+.App {
+  margin-top: 100px;
+  text-align: center;
+}
+
+#menu {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 50px;
+}
+.play {
+  text-align: center;
+}
+
+#speaker {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 50px;
+  cursor: pointer;
+}
+
+#score {
+  font-size: 50px;
+  margin: 20px;
+}
+
+button {
+  font-family: pokemonFont;
+  font-size: 30px;
+  border-radius: 2px;
+  padding: 10px 20px;
+  line-height: 16px;
+  background: white;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black,
+              inset 0 1px 0 1px black,
+              0 0 0 1px black,
+              inset 0 0 0 1px black;
+  cursor: pointer;
+}
+
+.choices {
+  border-radius: 2px;
+  padding: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
+  line-height: 16px;
+  background: white;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black,
+              inset 0 1px 0 1px black,
+              0 0 0 1px black,
+              inset 0 0 0 1px black;
+  cursor: pointer;
+}
+
+p {
+  font-size: 30px;
+}
