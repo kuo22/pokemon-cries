@@ -4,7 +4,13 @@ This web application is a quiz where the user has to choose the correct Pokemon 
 
 ## Current Features
 
-The app is currently limited to Pokemon in Gen 1.  However, I plan on expanding it to all existing Pokemon.  There is also only one mode, where the user attempts to answer as many as possible in a row without getting one wrong.
+* Limited to the first 151 Pokemon.
+* Only one survival mode available.
+
+## Future Features
+
+* To include all existing Pokemon.
+* Add more game modes such as time attack or training mode.
 
 ## Screenshots
 
