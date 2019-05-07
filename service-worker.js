@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pokemon-cries/precache-manifest.fe6ea8b652d94e565f72e0649f7c0326.js"
+  "/pokemon-cries/precache-manifest.e48d1ed17e29386da47d9cdb164b555c.js"
 );
 
 self.addEventListener('message', (event) => {
