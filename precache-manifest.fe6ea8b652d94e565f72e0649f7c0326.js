@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a2339cd0a85dc1aef76a541caa9051fa",
+    "revision": "3069f8e3a339a3925cb4bbde847596e5",
     "url": "/pokemon-cries/index.html"
   },
   {
-    "revision": "2a7537997bae731e216a",
-    "url": "/pokemon-cries/static/css/main.1aa68c12.chunk.css"
+    "revision": "3b68b9a8f3f5cf6d30bf",
+    "url": "/pokemon-cries/static/css/main.a518b06d.chunk.css"
   },
   {
     "revision": "e1df9e5dd97f9dc5b41a",
     "url": "/pokemon-cries/static/js/2.373ccd69.chunk.js"
   },
   {
-    "revision": "2a7537997bae731e216a",
+    "revision": "3b68b9a8f3f5cf6d30bf",
     "url": "/pokemon-cries/static/js/main.eb4a906b.chunk.js"
   },
   {
