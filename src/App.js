@@ -1,16 +1,10 @@
 import React from 'react';
-//import logo from './logo.svg';
 import speaker from './speaker.svg';
 import './App.css';
-
-// const reqImgs = require.context ('./sprites')
-// const paths = reqImgs.keys();
-// const imgs = paths.map( path => reqImgs(path));
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        console.log(getCookie("record"));
         let record = getCookie("record");
         if (record == null) {
             record = 0;
@@ -19,20 +13,17 @@ class App extends React.Component {
             playing: false,
             record: record
         };
-        this.checkRecord = this.checkRecord.bind(this);
-        this.setPlay = this.setPlay.bind(this);
-        this.setNoPlay = this.setNoPlay.bind(this);
     }
 
-    setPlay() {
+    setPlay = () => {
         this.setState({playing: true});
     }
 
-    setNoPlay() {
+    setNoPlay = () => {
         this.setState({playing: false});
     }
 
-    checkRecord(score) {
+    checkRecord = (score) => {
         if (score > this.state.record) {
             this.setState({record: score});
             document.cookie = "record=" + score;
@@ -60,6 +51,7 @@ class Intro extends React.Component {
     render() {
         return(
             <div id="menu">
+                <p>Guess the Pokemon by its cry!</p>
                 <p>Your record is {this.props.record}.</p>
                 <button onClick={this.props.setPlay}>Start!</button>
             </div>
@@ -70,23 +62,13 @@ class Intro extends React.Component {
 class Play extends React.Component {
     constructor(props) {
         super(props);
-
-        let choices = [];
-        while (choices.length < 3) {
-            let num = Math.floor(Math.random() * 151) + 1;
-            if (!choices.includes(num)) {
-                choices.push(num);
-            }
-        }
+        let choices = this.generateChoices();
         this.state = {
             score: 0,
-            choices: choices.slice(),
+            choices: choices,
             answer: choices[Math.floor(Math.random() * 3)],
             gameOver: false
         };
-        //this.generateChoices = this.generateChoices.bind(this);
-        //this.checkAnswer = this.checkAnswer.bind(this);
-        this.restart = this.restart.bind(this);
     }
 
     generateChoices = () => {
@@ -97,16 +79,20 @@ class Play extends React.Component {
                 choices.push(num);
             }
         }
+        return choices;
+    }
+
+    setChoices = () => {
+        let choices = this.generateChoices();
         this.setState({
-            choices: choices.slice(),
+            choices: choices,
             answer: choices[Math.floor(Math.random() * 3)]
         });
-        //console.log(this.state.choices);
     }
 
     checkAnswer = (e) => {
         if (parseInt(e.target.id) === this.state.answer) {
-            this.generateChoices();
+            this.setChoices();
             this.setState({score: this.state.score + 1});
         } else {
             this.setState({gameOver: true});
@@ -114,18 +100,18 @@ class Play extends React.Component {
     }
 
     createImages = () => {
-        return this.state.choices.map(function(val, index) {
-            let img_path = process.env.PUBLIC_URL + "/sprites/" + val + ".png";
+        return this.state.choices.map((val, index) => {
+            const img_path = `${process.env.PUBLIC_URL}/sprites/${val}.png`;
             return <img id={val} className="choices" key={index} src={img_path} alt="random pokemon" onClick={this.checkAnswer} />
-        }.bind(this));
+        });
     }
 
-    playAudio() {
-        document.getElementById("cry").play();
+    playAudio = () => {
+        this.refs.cry.play();
     }
 
-    restart() {
-        this.generateChoices();
+    restart = () => {
+        this.setChoices();
         this.setState({
             gameOver: false,
             score: 0
@@ -133,33 +119,34 @@ class Play extends React.Component {
     }
 
     render() {
-        console.log('Play Rendered')
-        let wav_path = process.env.PUBLIC_URL + "/cries/" + this.state.answer + ".wav";
-        if (!this.state.gameOver) {
-            return(
-                <div className="play">
-                    <audio id="cry" src={wav_path}></audio>
-                    <div id="speaker">
-                        <img src={speaker} alt="answer" onClick={this.playAudio} />
-                    </div>
-                    <div id="choices">
-                        { this.createImages() }
-                    </div>
-                    <div>
-                        <p id="score">{this.state.score}</p>
-                    </div>
-                    <button onClick={this.props.setNoPlay}>Quit</button>
-                </div>
-            );
-        } else {
+        let wav_path = `${process.env.PUBLIC_URL}/cries/${this.state.answer}.wav`;
+        if (this.state.gameOver) {
             return <Result score={this.state.score} checkRecord={this.props.checkRecord} restart={this.restart} />
         }
+        return(
+            <div className="play">
+                <audio id="cry" ref="cry" src={wav_path}></audio>
+                <div id="speaker">
+                    <img src={speaker} alt="answer" onClick={this.playAudio} />
+                </div>
+                <div id="choices">
+                    { this.createImages() }
+                </div>
+                <div>
+                    <p id="score">{this.state.score}</p>
+                </div>
+                <button onClick={this.props.setNoPlay}>Quit</button>
+            </div>
+        );
     }
 }
 
 class Result extends React.Component {
-    render() {
+    componentDidMount() {
         this.props.checkRecord(this.props.score);
+    }
+
+    render() {
         return (
             <div>
                 <div>
